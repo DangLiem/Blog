@@ -1,5 +1,4 @@
 <template>
-  <h1>This post detail</h1>
   
 </template>
 

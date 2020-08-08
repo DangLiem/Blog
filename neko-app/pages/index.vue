@@ -1,90 +1,7 @@
-<template>
+  <template>
   <div class="row">
     <div class="col-md-9 leftMain">
-      <div class="post mt-2 d-flex flex-column justify-content-center">
-        <div class="title">
-          <h2>Senior hay không-Senior?</h2>
-        </div>
-        <div class="content pt-2">
-          <p>
-            Mình sẽ mở đầu bài viết với một câu châm ngôn của bác Martin Fowler mà mình nghĩ ai là Software Engineer cũng đều nên nhớ, "Any fool can write code that a computer can understand. Good programmers write code that humans can
-            understand." Tạm dịch là, "Bất cứ thằng ngu nào cũng có thể...
-          </p>
-        </div>
-        <div class="btnRead">
-          <button class="btn-primary">Tiếp tục đọc</button>
-        </div>
-        <div class="tag d-flex justify-content-end">
-          <a class="pr-3" href="#">Dang Liem</a>
-          <a class="pr-3" href="#">Java</a>
-          <a class="pr-3" href="#">22 Bình luận</a>
-          <p class="pr-3">02/06/2020</p>
-        </div>
-      </div>
-      <hr />
-      <div class="post mt-2 d-flex flex-column justify-content-center">
-        <div class="title">
-          <h2>Đẳng cấp một dân chơi?</h2>
-        </div>
-        <div class="content pt-2">
-          <p>
-            Mình sẽ mở đầu bài viết với một câu châm ngôn của bác Martin Fowler mà mình nghĩ ai là Software Engineer cũng đều nên nhớ, "Any fool can write code that a computer can understand. Good programmers write code that humans can
-            understand." Tạm dịch là, "Bất cứ thằng ngu nào cũng có thể...
-          </p>
-        </div>
-        <div class="btnRead">
-          <button class="btn-primary">Tiếp tục đọc</button>
-        </div>
-        <div class="tag d-flex justify-content-end">
-          <a class="pr-3" href="#">Kha Banh</a>
-          <a class="pr-3" href="#">Java</a>
-          <a class="pr-3" href="#">999 Bình luận</a>
-          <p class="pr-3">02/06/2020</p>
-        </div>
-      </div>
-      <hr />
-      <div class="post mt-2 d-flex flex-column justify-content-center">
-        <div class="title">
-          <h2>Con gà gáy le té le té</h2>
-        </div>
-        <div class="content pt-2">
-          <p>
-            Mình sẽ mở đầu bài viết với một câu châm ngôn của bác Martin Fowler mà mình nghĩ ai là Software Engineer cũng đều nên nhớ, "Any fool can write code that a computer can understand. Good programmers write code that humans can
-            understand." Tạm dịch là, "Bất cứ thằng ngu nào cũng có thể...
-          </p>
-        </div>
-        <div class="btnRead">
-          <button class="btn-primary">Tiếp tục đọc</button>
-        </div>
-        <div class="tag d-flex justify-content-end">
-          <a class="pr-3" href="#">user</a>
-          <a class="pr-3" href="#">Java</a>
-          <a class="pr-3" href="#">Bình luận</a>
-          <p class="pr-3">02/06/2020</p>
-        </div>
-      </div>
-      <hr />
-      <div class="post mt-2 d-flex flex-column justify-content-center">
-        <div class="title">
-          <h2>Senior hay không-Senior?</h2>
-        </div>
-        <div class="content pt-2">
-          <p>
-            Mình sẽ mở đầu bài viết với một câu châm ngôn của bác Martin Fowler mà mình nghĩ ai là Software Engineer cũng đều nên nhớ, "Any fool can write code that a computer can understand. Good programmers write code that humans can
-            understand." Tạm dịch là, "Bất cứ thằng ngu nào cũng có thể...
-          </p>
-        </div>
-        <div class="btnRead">
-          <button class="btn-primary">Tiếp tục đọc</button>
-        </div>
-        <div class="tag d-flex justify-content-end">
-          <a class="pr-3" href="#">user</a>
-          <a class="pr-3" href="#">Java</a>
-          <a class="pr-3" href="#">Bình luận</a>
-          <p class="pr-3">02/06/2020</p>
-        </div>
-      </div>
-      <hr />
+      <PostSingle :post="post" v-for="(post, index) in listPosts" :key="index" />
     </div>
     <div class="col-md-3 rightMain">
       <div class="search pt-3">
@@ -148,7 +65,88 @@
 </template>
 
 <script>
-export default {};
+import PostSingle from "@/components/Post";
+import postService from "@/services/post";
+export default {
+  data() {
+    return {
+      listPosts: [
+        { id: "1",
+          title: "Senior hay không-Senior?",
+          createdDate: "11/22/2020",
+          shortContent:
+            "Mình sẽ mở đầu bài viết với một câu châm ngôn của bác Martin Fowler mà mình nghĩ ai là Software Engineer cũng đều nên nhớ, Any fool can write code that a computer can understand. Good programmers write code that humans can understand.Tạm dịch là, Bất cứ thằng ngu nào cũng có thể...",
+        },
+        {
+          id: "2",
+          title: "Developer tìm việc như thế nào?",
+          createdDate: "11/22/2020",
+          shortContent:
+            "Một câu hỏi thường gặp của những bạn sinh viên mới ra trường, thậm chí là những bạn junior developer dưới một năm kinh nghiệm đó là: Developer tìm việc như thế nào?  Mình đã từng trả lời rất nhiều câu hỏi dạng như vậy nên hôm nay mình sẽ chia sẻ một số kinh …",
+        },
+        {
+          id: "3",
+          title: "Tại sao developer nên tham gia các sự kiện công nghệ?",
+          createdDate: "11/22/2020",
+          shortContent:
+            "Mình sẽ mở đầu bài viết với một câu châm ngôn của bác Martin Fowler mà mình nghĩ ai là Software Engineer cũng đều nên nhớ, Any fool can write code that a computer can understand. Good programmers write code that humans can understand.Tạm dịch là, Bất cứ thằng ngu nào cũng có thể...",
+        },
+        {
+          id: "4",
+          title: "“Đùa nghịch” với Docker trong 5 phút",
+          createdDate: "11/22/2020",
+          shortContent:
+            "Mình sẽ mở đầu bài viết với một câu châm ngôn của bác Martin Fowler mà mình nghĩ ai là Software Engineer cũng đều nên nhớ, Any fool can write code that a computer can understand. Good programmers write code that humans can understand.Tạm dịch là, Bất cứ thằng ngu nào cũng có thể...",
+        },
+        {
+          id: "5",
+          title: "Tôi đã làm cho bạn nhân viên bán hàng sung sướng như thế nào?",
+          createdDate: "11/22/2020",
+          shortContent:
+            "Mình sẽ mở đầu bài viết với một câu châm ngôn của bác Martin Fowler mà mình nghĩ ai là Software Engineer cũng đều nên nhớ, Any fool can write code that a computer can understand. Good programmers write code that humans can understand.Tạm dịch là, Bất cứ thằng ngu nào cũng có thể...",
+        },
+        {
+          id: "6",
+          title: "Chuyện tối ưu code, xấu đẹp, đẹp xấu",
+          createdDate: "11/22/2020",
+          shortContent:
+            "Mình sẽ mở đầu bài viết với một câu châm ngôn của bác Martin Fowler mà mình nghĩ ai là Software Engineer cũng đều nên nhớ, Any fool can write code that a computer can understand. Good programmers write code that humans can understand.Tạm dịch là, Bất cứ thằng ngu nào cũng có thể...",
+        },
+        {
+          id: "7",
+          title: "Tại sao developer cần biết Regular Expression?",
+          createdDate: "11/22/2020",
+          shortContent:
+            "Mình sẽ mở đầu bài viết với một câu châm ngôn của bác Martin Fowler mà mình nghĩ ai là Software Engineer cũng đều nên nhớ, Any fool can write code that a computer can understand. Good programmers write code that humans can understand.Tạm dịch là, Bất cứ thằng ngu nào cũng có thể...",
+        },
+      ],
+    };
+  },
+  components: {
+    PostSingle,
+  },
+  methods: {
+    /**
+     * Lay ve tat ca cac bai viet
+     * Created by nvkhai 21.21.2022
+     */
+    fectch: async function () {
+      try {
+        var response = await postService.getAllPosts();
+        if (response.data.Succes) {
+          this.listPosts = response.data.data
+        } else {
+          throw Error('Khong lay duoc du lieu post');
+        }
+      } catch (error) {
+        logService.post(error.message);
+      }
+    },
+  },
+  created() {
+    //this.fectch();
+  },
+};
 </script>
 
 <style scoped>

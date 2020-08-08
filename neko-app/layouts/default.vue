@@ -5,7 +5,7 @@
       <Header />
       <!-- Main -->
       <div class="main pt-3">
-        <nuxt />
+        <nuxt />  
       </div>
       <!-- Footer -->
       <Footer />
