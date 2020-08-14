@@ -1,14 +1,17 @@
 <template>
-  <h1>This post detail</h1>
-  
+  <div>
+    <PostDetail />
+  </div>
 </template>
 
 <script>
+import PostDetail from "@/components/PostDetail/PostDetail";
 export default {
-
-}
+  components: {
+    PostDetail,
+  },
+};
 </script>
 
 <style scoped>
-
 </style>
